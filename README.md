@@ -67,8 +67,8 @@ Program to design a half subtractor and full subtractor circuit and verify its t
 Implementation-of-Full-Adder-and-Full-subtractor-circuit
 
 ```
-Developed by: CHANDRU SM
-RegisterNumber: 212223230034
+Developed by: DHARMALINGAM S
+RegisterNumber: 212223040037
 ```
 ```
 ## Full_adder
