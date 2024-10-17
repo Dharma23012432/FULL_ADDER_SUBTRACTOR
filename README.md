@@ -72,43 +72,53 @@ RegisterNumber: 212223040037
 ```
 ```
 ## Full_adder
-module fulladd_top(a,b,cin,sum,carry);
-input a,b,cin;
+module DE4(sum,carry,a,b,c);
+input a,b,c;
 output sum,carry;
-wire w1,w2,w3,w4;       
+wire w1,w2,w3;       
 xor(w1,a,b);
-xor(sum,w1,cin);        
+xor(sum,w1,c);        
 
 and(w2,a,b);
-and(w3,b,cin);
-and(w4,cin,a);
+and(w3,w1,c);
 
-or(carry,w2,w3,w4);
-endmodule 
+or(carry,w2,w3);
+endmodule
 
 ## Full_subtractor
-module fullsub_top(a,b,Bin,BO,DIFF);
-input a,b,Bin;
-output BO,DIFF;
-assign DIFF = a ^ b ^ Bin;
-  assign BO = (a & b) | ((a ^ b) & Bin);
+module fullsub(diff,borrow,a,b,bin);
+input a,b,bin;
+output diff,borrow;
+wire w1,w2,w3,w4,w5;
+xor (w1,a,b);
+xor(diff,w1,bin);
+not(w2,a);
+not(w3,w1);
+and(w4,w2,b);
+and(w5,w3,bin);
+or(borrow,w4,w5);
 endmodule
 
 ```
 
 **RTL Schematic**
+FULL ADDER
+![Screenshot 2024-10-17 104232](https://github.com/user-attachments/assets/29dcd690-aea7-4e29-acab-4973fe98ffd4)
 
-![318332382-c01e6c3c-d648-4bad-8a98-66d93df13f1a](https://github.com/04Varsha/FULL_ADDER_SUBTRACTOR/assets/149035374/2e45d893-4f83-4a98-8bc2-d0d30b70e7e2)
+
+FULL SUBTRACTOR
+![Screenshot 2024-10-17 110736](https://github.com/user-attachments/assets/446734dc-2c05-4c6f-a6e5-5b3b56b4d394)
+
 
 **Output Timing Waveform**
 
 **FULL ADDER**
 
-![WhatsApp Image 2024-10-08 at 10 38 59_ae518676](https://github.com/user-attachments/assets/694b3a92-17a8-4b82-8b9f-a786eaa55678)
+![Screenshot 2024-10-17 104013](https://github.com/user-attachments/assets/ce34373f-e41f-4d35-942e-f5e485fa94b6)
 
 **FULL SUBTRACTOR**
 
-![WhatsApp Image 2024-10-08 at 10 39 10_adfbfdc7](https://github.com/user-attachments/assets/8716ba91-4f74-4daf-b8fe-40c27bc82c03)
+![Screenshot 2024-10-17 111038](https://github.com/user-attachments/assets/777905e9-844b-475b-a557-873a6f3ced9d)
 
 
 **Result:**
